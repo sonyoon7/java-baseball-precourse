@@ -6,6 +6,6 @@ public interface Computor {
 
     Integer[] generatorRandomNumber();
 
-    String announceMessage(Message text);
+    void announceMessage(Message text);
 
 }
