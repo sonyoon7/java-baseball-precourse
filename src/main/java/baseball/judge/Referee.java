@@ -90,7 +90,7 @@ public class Referee implements Judge {
         if ("".equals(b)) {
             return s;
         }
-        return s + " " + b;
+        return b + " " + s;
     }
 
     private String toResult(int n, String text) {
