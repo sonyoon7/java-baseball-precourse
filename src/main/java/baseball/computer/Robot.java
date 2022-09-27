@@ -19,22 +19,12 @@ public class Robot implements Computor {
     private Integer[] generate3RandomNumbers() {
         Integer[] orderedNumbersArr = new Integer[3];
         Set<Integer> uniqueNumbers = new HashSet<>();
-
-        while (!(uniqueNumbers.size() == 3)) {
-
+        while (true) {
             int random = Randoms.pickNumberInRange(1, 9);
             int beforeSize = uniqueNumbers.size();
-
             uniqueNumbers.add(random);
-
-            int afterSize = uniqueNumbers.size();
-
-            boolean isDuplicated = beforeSize == afterSize;
-
-            if (!isDuplicated) orderedNumbersArr[beforeSize] = random;
-            if ((uniqueNumbers.size() == 3)) break;
-
+            if (!(beforeSize == uniqueNumbers.size())) orderedNumbersArr[beforeSize] = random;
+            if ((uniqueNumbers.size() == 3)) return orderedNumbersArr;
         }
-        return orderedNumbersArr;
     }
 }
