@@ -23,8 +23,12 @@ public class Robot implements Computor {
             int random = Randoms.pickNumberInRange(1, 9);
             int beforeSize = uniqueNumbers.size();
             uniqueNumbers.add(random);
-            if (!(beforeSize == uniqueNumbers.size())) orderedNumbersArr[beforeSize] = random;
-            if ((uniqueNumbers.size() == 3)) return orderedNumbersArr;
+            if (!(beforeSize == uniqueNumbers.size())) {
+                orderedNumbersArr[beforeSize] = random;
+            }
+            if ((uniqueNumbers.size() == 3)) {
+                return orderedNumbersArr;
+            }
         }
     }
 }

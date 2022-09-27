@@ -6,7 +6,7 @@ import baseball.user.User;
 import baseball.utils.Message;
 import java.util.Arrays;
 
-public class BaseballGame implements Game{
+public class BaseballGame implements Game {
 
     static final String[] NEW_GAME_ANSWERS = new String[]{"1", "2"};
     private Robot robot;
@@ -32,13 +32,13 @@ public class BaseballGame implements Game{
     }
 
     private boolean keepGoing() {
-            robot.announceMessage(Message.INPUT);
-            String input = user.readInput();
-            Integer[] userIntegerArray = user.inputTo3differentNumbersArray(input);
-            referee.init(userIntegerArray);
-            String r = referee.hasDetermine();
-            System.out.println(r);
-            return referee.getIsOut();
+        robot.announceMessage(Message.INPUT);
+        String input = user.readInput();
+        Integer[] userIntegerArray = user.inputTo3differentNumbersArray(input);
+        referee.init(userIntegerArray);
+        String r = referee.hasDetermine();
+        System.out.println(r);
+        return referee.getIsOut();
     }
 
     @Override
@@ -47,7 +47,9 @@ public class BaseballGame implements Game{
         while (true) {
             robot.announceMessage(Message.END);
             decisionForReplay = user.readInput();
-            if (validAskNewGameInput(decisionForReplay)) break;
+            if (validAskNewGameInput(decisionForReplay)) {
+                break;
+            }
             robot.announceMessage(Message.END_ERROR);
         }
         return "1".equals(decisionForReplay);
@@ -55,7 +57,9 @@ public class BaseballGame implements Game{
 
     private boolean validAskNewGameInput(String input) {
 
-        if (input.length() > 1) return false;
+        if (input.length() > 1) {
+            return false;
+        }
 
         return Arrays.asList(NEW_GAME_ANSWERS).contains(input);
     }

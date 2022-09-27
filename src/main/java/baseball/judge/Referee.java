@@ -25,13 +25,17 @@ public class Referee implements Judge {
 
     @Override
     public String hasDetermine() {
-        if (isStrikeOut()) return 3 + "" + Status.STRIKE.getStatus();
+        if (isStrikeOut()) {
+            return 3 + "" + Status.STRIKE.getStatus();
+        }
 
         for (int i = 0; i < userNum.length; i++) {
             determine(userNum[i], i);
         }
 
-        if (strike == 0 && ball == 0) return Status.NOTHING.getStatus();
+        if (strike == 0 && ball == 0) {
+            return Status.NOTHING.getStatus();
+        }
 
         return getResult();
     }
@@ -45,8 +49,12 @@ public class Referee implements Judge {
     }
 
     private void determine(Integer userNum, int index) {
-        if (isStrike(userNum, index)) return;
-        if (isBall(userNum)) return;
+        if (isStrike(userNum, index)) {
+            return;
+        }
+        if (isBall(userNum)) {
+            return;
+        }
     }
 
     private boolean isStrike(Integer number, int index) {
@@ -67,7 +75,9 @@ public class Referee implements Judge {
 
     private void addStrike(int add) {
         this.strike = strike + add;
-        if (this.strike == 3) this.isOut = true;
+        if (this.strike == 3) {
+            this.isOut = true;
+        }
     }
 
     private void addBall() {
@@ -77,14 +87,20 @@ public class Referee implements Judge {
     private String getResult() {
         String s = toResult(strike, Status.STRIKE.getStatus());
         String b = toResult(ball, Status.BALL.getStatus());
-        if ("".equals(s)) return b;
-        if ("".equals(b)) return s;
+        if ("".equals(s)) {
+            return b;
+        }
+        if ("".equals(b)) {
+            return s;
+        }
         return b + " " + s;
     }
 
     private String toResult(int n, String text) {
         StringBuilder sb = new StringBuilder();
-        if (n == 0) return "";
+        if (n == 0) {
+            return "";
+        }
         sb.append(n);
         sb.append(text);
         return sb.toString();
