@@ -1,4 +1,9 @@
 package baseball.judge;
 
-public class Judge {
+public interface Judge {
+
+    void init(Integer[] userNum);
+
+    String hasDetermine();
+
 }
