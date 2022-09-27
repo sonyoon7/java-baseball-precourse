@@ -102,4 +102,8 @@ public class Referee implements Judge {
         sb.append(text);
         return sb.toString();
     }
+
+    public boolean getIsOut() {
+        return this.isOut;
+    }
 }
