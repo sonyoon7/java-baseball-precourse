@@ -4,6 +4,7 @@ import baseball.computer.Robot;
 import baseball.judge.Referee;
 import baseball.user.User;
 import baseball.utils.Message;
+import java.util.Arrays;
 
 public class BaseballGame implements Game{
 
@@ -30,13 +31,7 @@ public class BaseballGame implements Game{
         }
     }
 
-    @Override
-    public boolean isNewGame() {
-        return false;
-    }
-
     private boolean keepGoing() {
-        try {
             robot.announceMessage(Message.INPUT);
             String input = user.readInput();
             Integer[] userIntegerArray = user.inputTo3differentNumbersArray(input);
@@ -44,9 +39,25 @@ public class BaseballGame implements Game{
             String r = referee.hasDetermine();
             System.out.println(r);
             return referee.getIsOut();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return keepGoing();
-        }
     }
+
+    @Override
+    public boolean isNewGame() {
+        String decisionForReplay;
+        while (true) {
+            robot.announceMessage(Message.END);
+            decisionForReplay = user.readInput();
+            if (validAskNewGameInput(decisionForReplay)) break;
+            robot.announceMessage(Message.END_ERROR);
+        }
+        return "1".equals(decisionForReplay);
+    }
+
+    private boolean validAskNewGameInput(String input) {
+
+        if (input.length() > 1) return false;
+
+        return Arrays.asList(NEW_GAME_ANSWERS).contains(input);
+    }
+
 }
