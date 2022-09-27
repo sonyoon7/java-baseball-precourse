@@ -6,7 +6,8 @@ public enum Message {
     INPUT("숫자를 입력해 주세요 : "),
     INPUT_ERROR("[ERROR] 1-9까지 3자리 수 숫자만 입력가능합니다."),
     END("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."),
-    END_ERROR("1 or 2 만 입력가능 합니다.");
+    END_ERROR("1 or 2 만 입력가능 합니다."),
+    STOP("게임 종료");
 
     private final String message;
 
